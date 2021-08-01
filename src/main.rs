@@ -7,6 +7,7 @@ fn main() {
 
     let func = match day {
         1 => days::day01::main,
+        2 => days::day02::main,
         _ => panic!("invalid day"),
     };
 
