@@ -6,7 +6,7 @@ const EXAMPLE_INPUT: &'static str = include_str!("example.txt");
 const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
 fn parse_input(input: &'static str) -> Vec<&'static str> {
-    return input.split("\n").collect();
+    input.split("\n").collect()
 }
 
 fn part1(input: &'static str) -> i32 {
@@ -17,7 +17,7 @@ fn part1(input: &'static str) -> i32 {
             count += 1;
         }
     }
-    return count;
+    count
 }
 
 fn part2(input: &'static str) -> i32 {
@@ -28,7 +28,7 @@ fn part2(input: &'static str) -> i32 {
             count += 1;
         }
     }
-    return count;
+    count
 }
 
 pub fn main() {

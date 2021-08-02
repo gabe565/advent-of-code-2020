@@ -15,17 +15,17 @@ pub struct Password {
 impl Password {
     pub fn from_str(input: &'static str) -> Self {
         let cap = RE.captures(input).unwrap();
-        return Self {
+        Self {
             first: *(&cap["min"].parse::<i32>().unwrap()),
             second: *(&cap["max"].parse::<i32>().unwrap()),
             target: *(&cap["target"].parse::<char>().unwrap()),
             password: cap.name("pass").unwrap().as_str(),
-        };
+        }
     }
 
     pub fn part1_valid(&self) -> bool {
         let count = self.password.matches(self.target).count() as i32;
-        return self.first <= count && count <= self.second;
+        self.first <= count && count <= self.second
     }
 
     pub fn part2_valid(&self) -> bool {
@@ -36,6 +36,6 @@ impl Password {
                 result = !result;
             }
         }
-        return result;
+        result
     }
 }

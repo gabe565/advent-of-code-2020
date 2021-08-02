@@ -15,11 +15,11 @@ impl Map {
         let rows = input.split("\n").map(
             |row| row.chars().collect()
         ).collect();
-        return Self {
+        Self {
             map: rows,
             x: 0,
             y: 0,
-        };
+        }
     }
 
     pub fn set_x(&mut self, x: usize) {
@@ -55,11 +55,11 @@ impl Map {
     }
 
     pub fn on_tree(&self) -> bool {
-        return self.map[self.y][self.x] == TREE_CELL;
+        self.map[self.y][self.x] == TREE_CELL
     }
 
     pub fn at_bottom(&self) -> bool {
-        return (self.y + 1) == self.map.len();
+        (self.y + 1) == self.map.len()
     }
 
     fn _print(&self, with_position: bool) {
@@ -76,10 +76,10 @@ impl Map {
     }
 
     pub fn print(&self) {
-        return self._print(false);
+        self._print(false)
     }
 
     pub fn print_with_position(&self) {
-        return self._print(true);
+        self._print(true)
     }
 }

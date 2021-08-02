@@ -3,9 +3,9 @@ const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 const SUM: i32 = 2020;
 
 fn parse_input(input: &'static str) -> Vec<i32> {
-    return input.split("\n")
+    input.split("\n")
         .map(|x| x.parse().unwrap())
-        .collect::<Vec<i32>>();
+        .collect::<Vec<i32>>()
 }
 
 fn part1(input: &'static str) -> i32 {
@@ -21,7 +21,7 @@ fn part1(input: &'static str) -> i32 {
             }
         }
     }
-    return -1;
+    -1
 }
 
 fn part2(input: &'static str) -> i32 {
@@ -42,7 +42,7 @@ fn part2(input: &'static str) -> i32 {
             }
         }
     }
-    return -1;
+    -1
 }
 
 pub fn main() {

@@ -13,12 +13,12 @@ fn process(map: &mut Map, x: usize, y: usize) -> i32 {
             count += 1;
         }
     }
-    return count;
+    count
 }
 
 fn part1(input: &'static str) -> i32 {
     let mut map = Map::from_str(input);
-    return process(&mut map, 3, 1);
+    process(&mut map, 3, 1)
 }
 
 fn part2(input: &'static str) -> i64 {
@@ -28,7 +28,7 @@ fn part2(input: &'static str) -> i64 {
         result *= process(&mut map, x, y) as i64;
         map.reset();
     }
-    return result;
+    result
 }
 
 pub fn main() {
