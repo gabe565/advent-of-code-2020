@@ -13,14 +13,23 @@ pub struct Password {
 }
 
 impl Password {
+    pub fn new(first: i32, second: i32, target: char, password: &'static str) -> Self {
+        Self {
+            first,
+            second,
+            target,
+            password,
+        }
+    }
+
     pub fn from_str(input: &'static str) -> Self {
         let cap = RE.captures(input).unwrap();
-        Self {
-            first: *(&cap["min"].parse::<i32>().unwrap()),
-            second: *(&cap["max"].parse::<i32>().unwrap()),
-            target: *(&cap["target"].parse::<char>().unwrap()),
-            password: cap.name("pass").unwrap().as_str(),
-        }
+        Self::new(
+            *(&cap["min"].parse::<i32>().unwrap()),
+            *(&cap["max"].parse::<i32>().unwrap()),
+            *(&cap["target"].parse::<char>().unwrap()),
+            cap.name("pass").unwrap().as_str(),
+        )
     }
 
     pub fn part1_valid(&self) -> bool {

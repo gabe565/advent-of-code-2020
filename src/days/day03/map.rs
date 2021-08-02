@@ -11,15 +11,19 @@ pub struct Map {
 
 #[allow(dead_code)]
 impl Map {
+    pub fn new(map: Vec<Vec<char>>) -> Self {
+        Self {
+            map,
+            x: 0,
+            y: 0,
+        }
+    }
+
     pub fn from_str(input: &'static str) -> Self {
         let rows = input.split("\n").map(
             |row| row.chars().collect()
         ).collect();
-        Self {
-            map: rows,
-            x: 0,
-            y: 0,
-        }
+        Self::new(rows)
     }
 
     pub fn set_x(&mut self, x: usize) {
