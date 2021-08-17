@@ -8,7 +8,7 @@ fn parse_input(input: &'static str) -> Vec<i32> {
         .collect::<Vec<i32>>()
 }
 
-fn part1(input: &'static str) -> i32 {
+fn part1(input: &'static str) -> Option<i32> {
     let list = parse_input(input);
 
     for x in &list {
@@ -17,14 +17,14 @@ fn part1(input: &'static str) -> i32 {
                 continue;
             }
             if x + y == SUM {
-                return x * y;
+                return Some(x * y);
             }
         }
     }
-    -1
+    None
 }
 
-fn part2(input: &'static str) -> i32 {
+fn part2(input: &'static str) -> Option<i32> {
     let list = parse_input(input);
 
     for x in &list {
@@ -37,27 +37,27 @@ fn part2(input: &'static str) -> i32 {
                     continue;
                 }
                 if x + y + z == SUM {
-                    return x * y * z;
+                    return Some(x * y * z);
                 }
             }
         }
     }
-    -1
+    None
 }
 
 pub fn main() {
-    println!("1.1 Example: {}", part1(EXAMPLE_INPUT));
-    println!("1.1 Problem: {}", part1(PROBLEM_INPUT));
-    println!("1.2 Example: {}", part2(EXAMPLE_INPUT));
-    println!("1.2 Problem: {}", part2(PROBLEM_INPUT));
+    println!("1.1 Example: {}", part1(EXAMPLE_INPUT).unwrap());
+    println!("1.1 Problem: {}", part1(PROBLEM_INPUT).unwrap());
+    println!("1.2 Example: {}", part2(EXAMPLE_INPUT).unwrap());
+    println!("1.2 Problem: {}", part2(PROBLEM_INPUT).unwrap());
 }
 
 #[test]
 fn test_example_1() {
-    assert_eq!(part1(EXAMPLE_INPUT), 514579);
+    assert_eq!(part1(EXAMPLE_INPUT).unwrap(), 514579);
 }
 
 #[test]
 fn test_example_2() {
-    assert_eq!(part2(EXAMPLE_INPUT), 241861950);
+    assert_eq!(part2(EXAMPLE_INPUT).unwrap(), 241861950);
 }
