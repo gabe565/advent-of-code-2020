@@ -10,22 +10,17 @@ const EXAMPLE_3_INPUT: &'static str = "FFFBBBFRRR";
 const EXAMPLE_4_INPUT: &'static str = "BBFFBBFRLL";
 const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
-pub fn part1(input: &'static str) -> BoardingPass {
-    let mut max = BoardingPass::new();
-    for i in input.split("\n") {
-        let pass = BoardingPass::from_str(i);
-        if pass > max {
-            max = pass;
-        }
-    }
-    max
+pub fn part1(input: &'static str) -> Option<BoardingPass> {
+    input.split("\n")
+        .map(|i| BoardingPass::from_str(i))
+        .max()
 }
 
 pub fn part2(input: &'static str) -> Option<Seat> {
-    let mut passes = vec!();
-    for i in input.split("\n") {
-        passes.push(BoardingPass::from_str(i));
-    }
+    let mut passes = input.split("\n")
+        .map(|i| BoardingPass::from_str(i))
+        .collect::<Vec<BoardingPass>>();
+
     passes.sort();
 
     let mut prev: Option<&BoardingPass> = None;
@@ -45,7 +40,7 @@ pub fn main() {
     println!("5.1 Example 2: {}", BoardingPass::from_str(EXAMPLE_2_INPUT));
     println!("5.1 Example 3: {}", BoardingPass::from_str(EXAMPLE_3_INPUT));
     println!("5.1 Example 4: {}", BoardingPass::from_str(EXAMPLE_4_INPUT));
-    println!("5.1 Problem: {}", part1(PROBLEM_INPUT));
+    println!("5.1 Problem: {}", part1(PROBLEM_INPUT).unwrap());
     println!("5.2 Problem: {}", part2(PROBLEM_INPUT).unwrap());
 }
 

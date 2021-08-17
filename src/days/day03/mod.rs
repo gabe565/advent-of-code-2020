@@ -17,8 +17,7 @@ fn process(map: &mut Map, x: usize, y: usize) -> u32 {
 }
 
 fn part1(input: &'static str) -> u32 {
-    let mut map = Map::from_str(input);
-    process(&mut map, 3, 1)
+    process(&mut Map::from_str(input), 3, 1)
 }
 
 fn part2(input: &'static str) -> u32 {
