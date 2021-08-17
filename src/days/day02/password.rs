@@ -6,14 +6,14 @@ lazy_static! {
 }
 
 pub struct Password {
-    pub first: i32,
-    pub second: i32,
+    pub first: u32,
+    pub second: u32,
     pub target: char,
     pub password: &'static str,
 }
 
 impl Password {
-    pub fn new(first: i32, second: i32, target: char, password: &'static str) -> Self {
+    pub fn new(first: u32, second: u32, target: char, password: &'static str) -> Self {
         Self {
             first,
             second,
@@ -25,15 +25,15 @@ impl Password {
     pub fn from_str(input: &'static str) -> Self {
         let cap = RE.captures(input).unwrap();
         Self::new(
-            *(&cap["min"].parse::<i32>().unwrap()),
-            *(&cap["max"].parse::<i32>().unwrap()),
+            *(&cap["min"].parse::<u32>().unwrap()),
+            *(&cap["max"].parse::<u32>().unwrap()),
             *(&cap["target"].parse::<char>().unwrap()),
             cap.name("pass").unwrap().as_str(),
         )
     }
 
     pub fn part1_valid(&self) -> bool {
-        let count = self.password.matches(self.target).count() as i32;
+        let count = self.password.matches(self.target).count() as u32;
         self.first <= count && count <= self.second
     }
 

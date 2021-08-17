@@ -9,7 +9,7 @@ fn parse_input(input: &'static str) -> Vec<&'static str> {
     input.split("\n").collect()
 }
 
-fn part1(input: &'static str) -> i32 {
+fn part1(input: &'static str) -> u32 {
     let mut count = 0;
     for i in parse_input(input) {
         let password = Password::from_str(i);
@@ -20,7 +20,7 @@ fn part1(input: &'static str) -> i32 {
     count
 }
 
-fn part2(input: &'static str) -> i32 {
+fn part2(input: &'static str) -> u32 {
     let mut count = 0;
     for i in parse_input(input) {
         let password = Password::from_str(i);

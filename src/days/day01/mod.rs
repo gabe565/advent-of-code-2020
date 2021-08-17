@@ -1,14 +1,14 @@
 const EXAMPLE_INPUT: &'static str = include_str!("example.txt");
 const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
-const SUM: i32 = 2020;
+const SUM: u32 = 2020;
 
-fn parse_input(input: &'static str) -> Vec<i32> {
+fn parse_input(input: &'static str) -> Vec<u32> {
     input.split("\n")
         .map(|x| x.parse().unwrap())
-        .collect::<Vec<i32>>()
+        .collect::<Vec<u32>>()
 }
 
-fn part1(input: &'static str) -> Option<i32> {
+fn part1(input: &'static str) -> Option<u32> {
     let list = parse_input(input);
 
     for x in &list {
@@ -24,7 +24,7 @@ fn part1(input: &'static str) -> Option<i32> {
     None
 }
 
-fn part2(input: &'static str) -> Option<i32> {
+fn part2(input: &'static str) -> Option<u32> {
     let list = parse_input(input);
 
     for x in &list {

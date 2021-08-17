@@ -58,7 +58,7 @@ impl Passport {
     pub fn byr_is_valid(&self) -> bool {
         match self.byr {
             Some(i) =>
-                match i.parse::<i32>() {
+                match i.parse::<u32>() {
                     Ok(i) => 1920 <= i && i <= 2002,
                     Err(_e) => false,
                 },
@@ -69,7 +69,7 @@ impl Passport {
     pub fn iyr_is_valid(&self) -> bool {
         match self.iyr {
             Some(i) =>
-                match i.parse::<i32>() {
+                match i.parse::<u32>() {
                     Ok(i) => 2010 <= i && i <= 2020,
                     Err(_e) => false,
                 },
@@ -80,7 +80,7 @@ impl Passport {
     pub fn eyr_is_valid(&self) -> bool {
         match self.eyr {
             Some(i) =>
-                match i.parse::<i32>() {
+                match i.parse::<u32>() {
                     Ok(i) => 2020 <= i && i <= 2030,
                     Err(_e) => false,
                 },
@@ -92,7 +92,7 @@ impl Passport {
         match self.hgt {
             Some(i) => {
                 let (str, unit) = i.split_at(i.len() - 2);
-                let hgt = str.parse::<i32>();
+                let hgt = str.parse::<u32>();
                 match hgt {
                     Ok(i) =>
                         match unit {
@@ -128,7 +128,7 @@ impl Passport {
 
     pub fn pid_is_valid(&self) -> bool {
         match self.pid {
-            Some(i) => i.len() == 9 && i.parse::<i32>().is_ok(),
+            Some(i) => i.len() == 9 && i.parse::<u32>().is_ok(),
             None => false,
         }
     }

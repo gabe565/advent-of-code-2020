@@ -3,8 +3,8 @@ use std::fmt::{Display, Formatter};
 
 use super::seat::Seat;
 
-const ROWS: i32 = 127;
-const COLS: i32 = 7;
+const ROWS: u32 = 127;
+const COLS: u32 = 7;
 const BACK_ROW: char = 'B';
 const FRONT_ROW: char = 'F';
 const RIGHT_COL: char = 'R';
@@ -13,8 +13,8 @@ const LEFT_COL: char = 'L';
 #[derive(Eq)]
 pub struct BoardingPass {
     str: &'static str,
-    pub row: i32,
-    pub col: i32,
+    pub row: u32,
+    pub col: u32,
     pub seat: Seat,
 }
 
@@ -37,10 +37,10 @@ impl BoardingPass {
     }
 
     pub fn compute(&mut self) {
-        let mut min_row = 0;
-        let mut max_row = ROWS;
-        let mut min_col = 0;
-        let mut max_col = COLS;
+        let mut min_row: u32 = 0;
+        let mut max_row: u32 = ROWS;
+        let mut min_col: u32 = 0;
+        let mut max_col: u32 = COLS;
 
         for i in self.str.chars() {
             match i {

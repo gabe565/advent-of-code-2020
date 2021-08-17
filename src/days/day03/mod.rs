@@ -5,7 +5,7 @@ mod map;
 const EXAMPLE_INPUT: &'static str = include_str!("example.txt");
 const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
-fn process(map: &mut Map, x: usize, y: usize) -> i32 {
+fn process(map: &mut Map, x: usize, y: usize) -> u32 {
     let mut count = 0;
     while !map.at_bottom() {
         map.move_xy(x, y);
@@ -16,16 +16,16 @@ fn process(map: &mut Map, x: usize, y: usize) -> i32 {
     count
 }
 
-fn part1(input: &'static str) -> i32 {
+fn part1(input: &'static str) -> u32 {
     let mut map = Map::from_str(input);
     process(&mut map, 3, 1)
 }
 
-fn part2(input: &'static str) -> i64 {
+fn part2(input: &'static str) -> u32 {
     let mut map = Map::from_str(input);
-    let mut result: i64 = 1;
+    let mut result: u32 = 1;
     for [x, y] in [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]] {
-        result *= process(&mut map, x, y) as i64;
+        result *= process(&mut map, x, y) as u32;
         map.reset();
     }
     result

@@ -7,7 +7,7 @@ const PART2_INVALID_INPUT: &'static str = include_str!("part2_invalid_example.tx
 const PART2_VALID_INPUT: &'static str = include_str!("part2_valid_example.txt");
 const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
-fn part1(input: &'static str) -> i32 {
+fn part1(input: &'static str) -> u32 {
     let mut count = 0;
     for i in input.split("\n\n") {
         let passport = Passport::from_str(i);
@@ -18,7 +18,7 @@ fn part1(input: &'static str) -> i32 {
     count
 }
 
-fn part2(input: &'static str) -> i32 {
+fn part2(input: &'static str) -> u32 {
     let mut count = 0;
     for i in input.split("\n\n") {
         let passport = Passport::from_str(i);

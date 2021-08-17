@@ -3,11 +3,11 @@ use std::cmp::Ordering;
 
 #[derive(Eq)]
 pub struct Seat {
-    pub id: i32,
+    pub id: u32,
 }
 
 impl Seat {
-    pub fn new(id: i32) -> Self{
+    pub fn new(id: u32) -> Self{
         Self{ id }
     }
 }
