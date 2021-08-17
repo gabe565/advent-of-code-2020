@@ -19,13 +19,6 @@ impl Map {
         }
     }
 
-    pub fn from_str(input: &'static str) -> Self {
-        let rows = input.split("\n").map(
-            |row| row.chars().collect()
-        ).collect();
-        Self::new(rows)
-    }
-
     pub fn set_x(&mut self, x: usize) {
         self.x = x;
         self.x %= self.map[self.y].len();
@@ -85,5 +78,14 @@ impl Map {
 
     pub fn print_with_position(&self) {
         self._print(true)
+    }
+}
+
+impl From<&'static str> for Map {
+    fn from(s: &'static str) -> Self {
+        let rows = s.split("\n")
+            .map(|row| row.chars().collect())
+            .collect();
+        Self::new(rows)
     }
 }

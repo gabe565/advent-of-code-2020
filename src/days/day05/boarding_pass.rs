@@ -29,13 +29,6 @@ impl BoardingPass {
         }
     }
 
-    pub fn from_str(str: &'static str) -> Self {
-        let mut new = Self::new();
-        new.str = str;
-        new.compute();
-        new
-    }
-
     pub fn compute(&mut self) {
         let mut min_row: u32 = 0;
         let mut max_row: u32 = ROWS;
@@ -65,6 +58,15 @@ impl BoardingPass {
         }
 
         self.seat.id = (self.row * 8) + self.col;
+    }
+}
+
+impl From<&'static str> for BoardingPass {
+    fn from(_: &'static str) -> Self {
+        let mut new = Self::new();
+        new.str = str;
+        new.compute();
+        new
     }
 }
 

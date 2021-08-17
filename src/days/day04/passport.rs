@@ -24,17 +24,6 @@ impl Passport {
         }
     }
 
-    pub fn from_str(input: &'static str) -> Self {
-        let mut passport = Passport::new();
-        let kv = input.split_whitespace().map(
-            |x| x.split_once(":").unwrap()
-        );
-        for (k, v) in kv {
-            passport.set(k, v);
-        }
-        passport
-    }
-
     pub fn set(&mut self, k: &'static str, v: &'static str) {
         match k {
             "byr" => self.byr = Some(v),
@@ -141,5 +130,18 @@ impl Passport {
         self.byr_is_valid() && self.iyr_is_valid() && self.eyr_is_valid()
             && self.hgt_is_valid() && self.hcl_is_valid() && self.ecl_is_valid()
             && self.pid_is_valid() && self.cid_is_valid()
+    }
+}
+
+impl From<&'static str> for Passport {
+    fn from(s: &'static str) -> Self {
+        let mut passport = Passport::new();
+        let kv = s.split_whitespace().map(
+            |x| x.split_once(":").unwrap()
+        );
+        for (k, v) in kv {
+            passport.set(k, v);
+        }
+        passport
     }
 }

@@ -7,14 +7,14 @@ const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
 fn part1(input: &'static str) -> usize {
     input.split("\n")
-        .map(|i| Password::from_str(i).part1_valid())
+        .map(|i| Password::from(i).part1_valid())
         .filter(|i| i == &true)
         .count()
 }
 
 fn part2(input: &'static str) -> usize {
     input.split("\n")
-        .map(|i| Password::from_str(i).part2_valid())
+        .map(|i| Password::from(i).part2_valid())
         .filter(|i| i == &true)
         .count()
 }

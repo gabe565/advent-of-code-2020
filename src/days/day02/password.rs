@@ -22,16 +22,6 @@ impl Password {
         }
     }
 
-    pub fn from_str(input: &'static str) -> Self {
-        let cap = RE.captures(input).unwrap();
-        Self::new(
-            *(&cap["min"].parse::<u32>().unwrap()),
-            *(&cap["max"].parse::<u32>().unwrap()),
-            *(&cap["target"].parse::<char>().unwrap()),
-            cap.name("pass").unwrap().as_str(),
-        )
-    }
-
     pub fn part1_valid(&self) -> bool {
         let count = self.password.matches(self.target).count() as u32;
         self.first <= count && count <= self.second
@@ -46,5 +36,17 @@ impl Password {
             }
         }
         result
+    }
+}
+
+impl From<&'static str> for Password {
+    fn from(s: &'static str) -> Self {
+        let cap = RE.captures(s).unwrap();
+        Self::new(
+            cap.name("min").unwrap().as_str().parse().unwrap(),
+            cap.name("max").unwrap().as_str().parse().unwrap(),
+            cap.name("target").unwrap().as_str().parse().unwrap(),
+            cap.name("pass").unwrap().as_str(),
+        )
     }
 }

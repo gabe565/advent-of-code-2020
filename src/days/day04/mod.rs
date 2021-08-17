@@ -9,14 +9,14 @@ const PROBLEM_INPUT: &'static str = include_str!("problem.txt");
 
 fn part1(input: &'static str) -> usize {
     input.split("\n\n")
-        .map(|i| Passport::from_str(i).part1_is_valid())
+        .map(|i| Passport::from(i).part1_is_valid())
         .filter(|i| i == &true)
         .count()
 }
 
 fn part2(input: &'static str) -> usize {
     input.split("\n\n")
-        .map(|i| Passport::from_str(i).part2_is_valid())
+        .map(|i| Passport::from(i).part2_is_valid())
         .filter(|i| i == &true)
         .count()
 }
