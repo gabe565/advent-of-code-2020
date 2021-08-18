@@ -37,12 +37,17 @@ pub fn main() {
     println!("3.2 Problem: {}", part2(PROBLEM_INPUT));
 }
 
-#[test]
-fn test_example_1() {
-    assert_eq!(part1(EXAMPLE_INPUT), 7);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_example_2() {
-    assert_eq!(part2(EXAMPLE_INPUT), 336);
+    #[test]
+    fn example_1_works() {
+        assert_eq!(part1(EXAMPLE_INPUT), 7);
+    }
+
+    #[test]
+    fn example_2_works() {
+        assert_eq!(part2(EXAMPLE_INPUT), 336);
+    }
 }

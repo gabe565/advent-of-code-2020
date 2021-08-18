@@ -52,12 +52,17 @@ pub fn main() {
     println!("1.2 Problem: {}", part2(PROBLEM_INPUT).unwrap());
 }
 
-#[test]
-fn test_example_1() {
-    assert_eq!(part1(EXAMPLE_INPUT).unwrap(), 514579);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_example_2() {
-    assert_eq!(part2(EXAMPLE_INPUT).unwrap(), 241861950);
+    #[test]
+    fn example_1_works() {
+        assert_eq!(part1(EXAMPLE_INPUT).unwrap(), 514579);
+    }
+
+    #[test]
+    fn example_2_works() {
+        assert_eq!(part2(EXAMPLE_INPUT).unwrap(), 241861950);
+    }
 }

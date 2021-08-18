@@ -42,35 +42,33 @@ pub fn main() {
     println!("5.2 Problem: seat ID {}", part2(PROBLEM_INPUT).unwrap());
 }
 
-#[test]
-pub fn test_example_1() {
-    let pass = BoardingPass::from(EXAMPLE_1_INPUT);
-    assert_eq!(pass.row, 44);
-    assert_eq!(pass.col, 5);
-    assert_eq!(pass.seat(), 357);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-pub fn test_example_2() {
-    let pass = BoardingPass::from(EXAMPLE_2_INPUT);
-    assert_eq!(pass.row, 70);
-    assert_eq!(pass.col, 7);
-    assert_eq!(pass.seat(), 567);
-}
+    fn assert_boarding_pass_eq(pass: &BoardingPass, row: u32, col: u32, seat: u32) {
+        assert_eq!(pass.row, row);
+        assert_eq!(pass.col, col);
+        assert_eq!(pass.seat(), seat);
+    }
 
-#[test]
-pub fn test_example_3() {
-    let pass = BoardingPass::from(EXAMPLE_3_INPUT);
-    assert_eq!(pass.row, 14);
-    assert_eq!(pass.col, 7);
-    assert_eq!(pass.seat(), 119);
-}
+    #[test]
+    pub fn example_1_works() {
+        assert_boarding_pass_eq(&BoardingPass::from(EXAMPLE_1_INPUT), 44, 5, 357);
+    }
 
-#[test]
-pub fn test_example_4() {
-    let pass = BoardingPass::from(EXAMPLE_4_INPUT);
-    assert_eq!(pass.row, 102);
-    assert_eq!(pass.col, 4);
-    assert_eq!(pass.seat(), 820);
-}
+    #[test]
+    pub fn example_2_works() {
+        assert_boarding_pass_eq(&BoardingPass::from(EXAMPLE_2_INPUT), 70, 7, 567);
+    }
 
+    #[test]
+    pub fn example_3_works() {
+        assert_boarding_pass_eq(&BoardingPass::from(EXAMPLE_3_INPUT), 14, 7, 119);
+    }
+
+    #[test]
+    pub fn example_4_works() {
+        assert_boarding_pass_eq(&BoardingPass::from(EXAMPLE_4_INPUT), 102, 4, 820);
+    }
+}

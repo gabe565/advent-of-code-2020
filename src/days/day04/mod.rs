@@ -29,17 +29,22 @@ pub fn main() {
     println!("4.2 Problem: {}", part2(PROBLEM_INPUT));
 }
 
-#[test]
-fn test_example_1() {
-    assert_eq!(part1(PART1_EXAMPLE_INPUT), 2);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_example_2_invalid() {
-    assert_eq!(part2(PART2_INVALID_INPUT), 0);
-}
+    #[test]
+    fn example_1_works() {
+        assert_eq!(part1(PART1_EXAMPLE_INPUT), 2);
+    }
 
-#[test]
-fn test_example_2_valid() {
-    assert_eq!(part2(PART2_VALID_INPUT), 4);
+    #[test]
+    fn example_2_invalid_works() {
+        assert_eq!(part2(PART2_INVALID_INPUT), 0);
+    }
+
+    #[test]
+    fn example_2_valid_works() {
+        assert_eq!(part2(PART2_VALID_INPUT), 4);
+    }
 }
