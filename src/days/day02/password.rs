@@ -1,9 +1,9 @@
-use lazy_static::lazy_static;
 use regex::Regex;
+use once_cell::sync::Lazy;
 
-lazy_static! {
-    static ref RE: Regex = Regex::new(r"^(?P<min>\d+)-(?P<max>\d+) (?P<target>.): (?P<pass>.*)$").unwrap();
-}
+static RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(r"^(?P<min>\d+)-(?P<max>\d+) (?P<target>.): (?P<pass>.*)$").unwrap()
+});
 
 pub struct Password {
     pub first: u32,
