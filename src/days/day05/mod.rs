@@ -1,8 +1,6 @@
 use boarding_pass::BoardingPass;
-use seat::Seat;
 
 mod boarding_pass;
-mod seat;
 
 const EXAMPLE_1_INPUT: &'static str = "FBFBBFFRLR";
 const EXAMPLE_2_INPUT: &'static str = "BFFFBBFRRR";
@@ -16,7 +14,7 @@ pub fn part1(input: &'static str) -> Option<BoardingPass> {
         .max()
 }
 
-pub fn part2(input: &'static str) -> Option<Seat> {
+pub fn part2(input: &'static str) -> Option<u32> {
     let mut passes = input.split("\n")
         .map(|i| BoardingPass::from(i))
         .collect::<Vec<BoardingPass>>();
@@ -26,8 +24,8 @@ pub fn part2(input: &'static str) -> Option<Seat> {
     let mut prev: Option<&BoardingPass> = None;
     for pass in &passes {
         if let Some(prev) = prev {
-            if prev.seat.id != pass.seat.id - 1 {
-                return Some(Seat::new(pass.seat.id - 1));
+            if prev.seat() != pass.seat() - 1 {
+                return Some(pass.seat() - 1);
             }
         }
         prev = Some(pass);
@@ -41,7 +39,7 @@ pub fn main() {
     println!("5.1 Example 3: {}", BoardingPass::from(EXAMPLE_3_INPUT));
     println!("5.1 Example 4: {}", BoardingPass::from(EXAMPLE_4_INPUT));
     println!("5.1 Problem: {}", part1(PROBLEM_INPUT).unwrap());
-    println!("5.2 Problem: {}", part2(PROBLEM_INPUT).unwrap());
+    println!("5.2 Problem: seat ID {}", part2(PROBLEM_INPUT).unwrap());
 }
 
 #[test]
@@ -49,7 +47,7 @@ pub fn test_example_1() {
     let pass = BoardingPass::from(EXAMPLE_1_INPUT);
     assert_eq!(pass.row, 44);
     assert_eq!(pass.col, 5);
-    assert_eq!(pass.seat.id, 357);
+    assert_eq!(pass.seat(), 357);
 }
 
 #[test]
@@ -57,7 +55,7 @@ pub fn test_example_2() {
     let pass = BoardingPass::from(EXAMPLE_2_INPUT);
     assert_eq!(pass.row, 70);
     assert_eq!(pass.col, 7);
-    assert_eq!(pass.seat.id, 567);
+    assert_eq!(pass.seat(), 567);
 }
 
 #[test]
@@ -65,7 +63,7 @@ pub fn test_example_3() {
     let pass = BoardingPass::from(EXAMPLE_3_INPUT);
     assert_eq!(pass.row, 14);
     assert_eq!(pass.col, 7);
-    assert_eq!(pass.seat.id, 119);
+    assert_eq!(pass.seat(), 119);
 }
 
 #[test]
@@ -73,5 +71,6 @@ pub fn test_example_4() {
     let pass = BoardingPass::from(EXAMPLE_4_INPUT);
     assert_eq!(pass.row, 102);
     assert_eq!(pass.col, 4);
-    assert_eq!(pass.seat.id, 820);
+    assert_eq!(pass.seat(), 820);
 }
+
