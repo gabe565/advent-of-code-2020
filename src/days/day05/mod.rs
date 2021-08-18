@@ -71,4 +71,14 @@ mod tests {
     pub fn example_4_works() {
         assert_boarding_pass_eq(&BoardingPass::from(EXAMPLE_4_INPUT), 102, 4, 820);
     }
+
+    #[test]
+    pub fn problem_1_works() {
+        assert_boarding_pass_eq(&part1(PROBLEM_INPUT).unwrap(), 106, 7, 855);
+    }
+
+    #[test]
+    pub fn problem_2_works() {
+        assert_eq!(part2(PROBLEM_INPUT).unwrap(), 552);
+    }
 }

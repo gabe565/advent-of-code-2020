@@ -39,6 +39,11 @@ mod tests {
     }
 
     #[test]
+    fn problem_1_works() {
+        assert_eq!(part1(PROBLEM_INPUT), 254);
+    }
+
+    #[test]
     fn example_2_invalid_works() {
         assert_eq!(part2(PART2_INVALID_INPUT), 0);
     }
@@ -46,5 +51,10 @@ mod tests {
     #[test]
     fn example_2_valid_works() {
         assert_eq!(part2(PART2_VALID_INPUT), 4);
+    }
+
+    #[test]
+    fn problem_2_works() {
+        assert_eq!(part2(PROBLEM_INPUT), 184);
     }
 }

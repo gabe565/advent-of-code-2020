@@ -47,7 +47,17 @@ mod tests {
     }
 
     #[test]
+    fn problem_1_works() {
+        assert_eq!(part1(PROBLEM_INPUT), 247);
+    }
+
+    #[test]
     fn example_2_works() {
         assert_eq!(part2(EXAMPLE_INPUT), 336);
+    }
+
+    #[test]
+    fn problem_2_works() {
+        assert_eq!(part2(PROBLEM_INPUT), 2983070376);
     }
 }
